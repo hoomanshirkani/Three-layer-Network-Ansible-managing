@@ -1,0 +1,22 @@
+[core_routers]
+192.168.30.50  ansible_host=192.168.30.50  ansible_ssh_pass=123 ansible_ssh_user=hooman
+
+[distribution_routers]
+192.168.30.60  ansible_host=192.168.30.60  ansible_ssh_pass=123 ansible_ssh_user=hooman
+
+[access_routers]
+192.168.30.70  ansible_host=192.168.30.70  ansible_ssh_pass=123 ansible_ssh_user=hooman
+
+
+[all:vars]
+
+ansible_ssh_pass=hooman
+ansible_user=123
+ansible_network_os=ios
+ansible_connection=network_cli
+
+# If using an enable password add these
+
+ansible_become_pass=123
+ansible_become=yes
+ansible_become_method=enable

@@ -1,0 +1,51 @@
+--- 
+- hosts: core_routers, distribution_routers, access_routers
+  tasks:
+    - name: Configure VLANs with names and IP addresses
+      ios_config:
+        lines:
+          - vlan 100
+          - name Dep1
+          - exit
+          - interface Vlan 100
+          - ip address 192.168.100.1 255.255.255.0
+          - no shutdown
+          - exit
+          - vlan 200
+          - name Dep2
+          - no shut
+          - exit
+          - interface Vlan 200
+          - ip address 192.168.200.1 255.255.255.0
+          - no shutdown
+          - exit
+          - vlan 300
+          - name Dep3
+          - exit
+          - interface Vlan 300
+          - ip address 192.168.31.1 255.255.255.0
+          - no shutdown 
+          - exit
+          - do write memory
+      when: "'core_routers' in group_names"
+    - name: Configure the Distribution layer
+      ios_config:
+        lines:
+          - Vlan 100
+          - Vlan 200
+          - Vlan 300
+          - do write memory
+      when: "'distribution_routers' in group_names"
+
+    - name: Configure the Access layer
+      ios_config:
+        lines:
+          - interface range GigabitEthernet0/2
+          - switchport mode access
+          - no shut
+          - switchport access vlan 100
+          - Vlan 100
+          - Vlan 200
+          - Vlan 300
+          - do write memory
+        when: "'access_routers' in group_names"
