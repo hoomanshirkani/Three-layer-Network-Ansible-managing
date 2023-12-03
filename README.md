@@ -1,5 +1,4 @@
-Three-Layer Network Automation with Ansible
-Overview
+
 "Three-layer-Network-Ansible-managing" is a repository showcasing the automation of VLAN segmentation and routing in a three-layer network architecture using Ansible. This project is particularly designed for implementation in an EVE-NG environment using Cisco Virtual IOS (vIOS) for routers and switches.
 
 Features
