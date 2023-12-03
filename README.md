@@ -17,8 +17,7 @@ Installation & Configuration
 
 This project offers a practical approach to learning and implementing network automation in a structured three-layer network. Customize the playbooks and configurations for your specific network scenario.
 
-Contributing
-We welcome contributions, bug reports, and feature requests. Please refer to CONTRIBUTING.md for more details.
+
 
 
 Acknowledgements
