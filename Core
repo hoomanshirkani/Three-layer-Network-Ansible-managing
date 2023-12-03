@@ -1,0 +1,203 @@
+ 
+!
+! Last configuration change at 14:03:25 UTC Sun Dec 3 2023 by hooman
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname core
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$ONBZ$1l44y0cxvieCjCKf01SQH/
+!
+username hooman password 0 123
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain-name hooman.com
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no shutdown
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ no shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ no shutdown
+ no switchport
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ no shutdown
+ no switchport
+ ip address 192.168.20.1 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ no shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ no shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ no shutdown
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ no shutdown
+ media-type rj45
+ negotiation auto
+!
+interface Vlan1
+ no shutdown
+ no ip address
+!
+interface Vlan5
+ no shutdown
+ ip address 192.168.30.50 255.255.255.0
+!
+interface Vlan10
+ no shutdown
+ ip address 192.168.10.1 255.255.255.0
+ shutdown
+!
+interface Vlan20
+ no shutdown
+ ip address 192.168.20.1 255.255.255.0
+ shutdown
+!
+interface Vlan100
+ no shutdown
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Vlan200
+ no shutdown
+ ip address 192.168.200.1 255.255.255.0
+!
+interface Vlan300
+ no shutdown
+ ip address 192.168.31.1 255.255.255.0
+ shutdown
+!
+ip default-gateway 192.168.25.2
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 192.168.25.2
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+#
+#
+#
+
+
+
+^-----------------------------------------------------------------------
+<SW NAME>
+B HODL CORP
+B THIS IS A HODL CORP COMPUTER SYSTEM. THIS COMPUTER
+B SYSTEM, INCLUDING ALL RELATED EQUIPMENT, NETWORKS AND NETWORK DEVICES
+B (SPECIFICALLY INCLUDING INTERNET ACCESS), ARE PROVIDED ONLY FOR
+B AUTHORIZED USE. HODL CORP SYSTEMS MAY BE MONITORED
+B FOR ALL LAWFUL PURPOSES, INCLUDING TO ENSURE THAT THEIR USE IS
+B AUTHORIZED, FOR MANAGEMENT OF THE SYSTEM, TO FACILITATE PROTECTION
+B AGAINST UNAUTHORIZED ACCESS, AND TO VERIFY SECURITY PROCEDURES,
+B SURVIVABILITY AND OPERATIONAL SECURITY. MONITORING INCLUDES ACTIVE
+B ATTACKS BY AUTHORIZED COMPANY ENTITIES TO TEST OR VERIFY THE SECURITY OF
+B THIS SYSTEM. DURING MONITORING, INFORMATION MAY BE EXAMINED,
+B RECORDED, COPIED AND USED FOR AUTHORIZED PURPOSES. ALL INFORMATION,
+B INCLUDING PERSONAL INFORMATION, PLACED ON OR SENT OVER THIS SYSTEM MAY
+B BE MONITORED.
+B USE OF THIS HODL CORP SYSTEM, AUTHORIZED OR UNAUTHORIZED,
+B CONSTITUTES CONSENT TO MONITORING OF THIS SYSTEM. UNAUTHORIZED USE
+B MAY SUBJECT YOU TO CRIMINAL PROSECUTION. EVIDENCE OF UNAUTHORIZED USE
+B COLLECTED DURING MONITORING MAY BE USED FOR ADMINISTRATIVE, CRIMINAL
+B OR OTHER ADVERSE ACTION. USE OF THIS SYSTEM CONSTITUTES CONSENT TO
+B MONITORING FOR THESE PURPOSES.
+-----------------------------------------------------------------------
+^
+^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ password 123
+ login local
+ transport input ssh
+line vty 5 15
+ password 123
+ login local
+ transport input ssh
+!
